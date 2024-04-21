@@ -1,0 +1,121 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=DM+Serif+Text&family=Merriweather:wght@300&family=Overpass:wght@700&family=Playfair+Display:wght@700&display=swap');
+body{
+    background: rgb(253, 253, 253);
+}
+.loginform{
+    margin: auto;
+    margin-top: 6%;
+    width:70%;
+    text-align: center;
+   object-position: center;
+  background-image: linear-gradient(white,white);
+   color: black;
+   /* padding:2%; */
+   background-size: cover;
+  display: flex;
+  justify-content: space-around;
+ 
+  /* transform: skewX(-15deg); */
+  box-shadow: 0px 0px 20px 0px black;
+}
+.loginsideimg{
+    background-image: url("./loginpic4.jpg");
+    background-size: cover;
+    width: 50%;
+    height:76vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* transform:translate(-3.3em); */
+    /* transform: skewX(-15deg); */
+
+}
+.loginform>fieldset{
+    padding:2%;
+    object-position: left;
+    place-items: left;
+    width: 50%;
+text-align: initial;
+border: none;
+}
+
+
+.loginform>fieldset>label>input{
+    margin: 2%;
+    padding: 2%;
+    width:75%;
+    border-top:none ;
+    border-left:none ;
+    border-right:none ;
+    border-color: rgb(202, 203, 205);
+    background-image: linear-gradient(white,white);
+    font-size: large;
+
+    
+}
+.loginform>fieldset>label>input:focus{
+    outline: none;
+}
+.loginform>fieldset>legend{
+    font-size: 2vw;
+    font-family: 'DM Serif Text', serif;
+}
+.Signin{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+align-items: center;
+/* padding: 1vw; */
+}
+
+.Signin>button{
+    width: 76%;
+    padding:1.8%;
+    border-radius: 100px;
+    background-image: linear-gradient(rgb(16, 15, 15),rgb(6, 6, 6));
+    margin-top: 2vw;
+    color: White;
+    font-weight: bolder;
+    font-size: large;
+}
+.google{
+    display: flex;
+align-items: center;
+justify-content: center;
+}
+#remme{
+    padding: 1vh;
+}
+.login_extras{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.submitbtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.submitbtn>input{
+   
+    padding: 1.5%;
+    margin: 2%;
+    width: 10vw;
+    border-radius: 100px;
+    font-size: larger;
+    background: rgb(0, 0, 0);
+    color: rgb(245, 240, 240);
+    font-weight: bolder;
+}
+.loginsideimg>img{
+    max-width: 14em;
+    background-color: rgb(245, 244, 248);
+    padding: 0;
+    margin-top:0;
+    box-shadow: 0 0 10px 0px rgb(243, 243, 246);
+}
+.reglink{
+    text-align: center;
+    margin-bottom: 0;
+}
