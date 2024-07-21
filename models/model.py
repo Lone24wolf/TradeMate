@@ -46,7 +46,8 @@ for symbol in symbols:
     # Train the model
     model.fit(X_train, y_train, epochs=100, batch_size=64, verbose=1)
 
-    # Save the model
+    # Save the model+
+    
     model_file = f'{symbol}_model.h5'
     # if os.path.exists(model_file):
     #     os.remove(model_file)  # Delete the existing file

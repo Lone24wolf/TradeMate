@@ -1,5 +1,5 @@
-
 import React, { useState ,FormEvent} from 'react';
+import Chart from 'chart.js/auto';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
@@ -10,13 +10,19 @@ import TextField from '@mui/material/TextField';
 import starry from "../../images/business-8256831.jpg";
 // import { makeStyles } from '@mui/styles';
 import Header from '../../Header/header';
+import StockChart from './StockChart';
+
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store';
 
 function Home() {
   // const classes = useStyles();
   const [csvFile, setCsvFile] = useState<File | null>(null);
   const [jsonData, setJsonData] = useState(null);
   const [symbols, setSymbols] = useState([]);
-
+  const user = useSelector((state: RootState) => state.user.userInfo);
+  console.log(user);
+  const tickers = ['MMM'];
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files?.[0];
@@ -24,15 +30,19 @@ function Home() {
       setCsvFile(selectedFile);
     }
   };
-  console.log(csvFile)
+  // console.log(csvFile)
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!csvFile) {
-      console.error('No file selected');
+      alert('No file selected');
       return;
     }
     const formData = new FormData();
     formData.append('csvFile', csvFile);
+    if(user)
+    {
+      formData.append('email', user.email);
+    }
 
     try {
       // const csrfToken = getCookie('csrftoken');
@@ -153,37 +163,47 @@ function Home() {
 
               </form>
               {symbols.length>0 && (
-                <div>
-                  <h3>Symbols:</h3>
-                  <ul>
-                    {symbols.map((symbol, index) => (
-                      <li key={index}>{symbol}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              <div style={{ display: 'block',textAlign: 'left',width:'100%'}}>
-                <Typography variant="body1" gutterBottom>Adani Power</Typography>
-                <hr />
-                <Typography variant="body1" gutterBottom>Adani Power</Typography>
-                <hr />
-                <Typography variant="body1" gutterBottom>Adani Power</Typography>
-                <hr />
-                <Typography variant="body1" gutterBottom>Adani Power</Typography>
-                <hr />
-                <Typography variant="body1" gutterBottom>Adani Power</Typography>
-                <hr />
-                <Typography variant="body1" gutterBottom>Adani Power</Typography>
-                <hr />
-                <Typography variant="body1" gutterBottom>Adani Power</Typography>
-                <hr />
-                <Typography variant="body1" gutterBottom>Adani Power</Typography>
-                <hr />
-                <Typography variant="body1" gutterBottom>Adani Power</Typography>
-                <hr />
-                <Typography variant="body1" gutterBottom>Adani Power</Typography>
-                <hr />
+                // <div>
+                //   <h3>Symbols:</h3>
+                //   <ul>
+                //     {symbols.map((symbol, index) => (
+                //       <li key={index}>{symbol}</li>
+                //     ))}
+                //   </ul>
+                // </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }}>
+                {symbols.map((ticker, index) => (
+                  <StockChart key={index} ticker={ticker} />
+                ))}
               </div>
+              )}
+               {/* <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }}>
+                {tickers.map((ticker, index) => (
+                  <StockChart key={index} ticker={ticker} />
+                ))}
+              </div> */}
+              {/* <div style={{ display: 'block',textAlign: 'left',width:'100%'}}>
+                <Typography variant="body1" gutterBottom>Adani Power</Typography>
+                <hr />
+                <Typography variant="body1" gutterBottom>Adani Power</Typography>
+                <hr />
+                <Typography variant="body1" gutterBottom>Adani Power</Typography>
+                <hr />
+                <Typography variant="body1" gutterBottom>Adani Power</Typography>
+                <hr />
+                <Typography variant="body1" gutterBottom>Adani Power</Typography>
+                <hr />
+                <Typography variant="body1" gutterBottom>Adani Power</Typography>
+                <hr />
+                <Typography variant="body1" gutterBottom>Adani Power</Typography>
+                <hr />
+                <Typography variant="body1" gutterBottom>Adani Power</Typography>
+                <hr />
+                <Typography variant="body1" gutterBottom>Adani Power</Typography>
+                <hr />
+                <Typography variant="body1" gutterBottom>Adani Power</Typography>
+                <hr />
+              </div> */}
               {/* <Grid container spacing={3} style={{ margin: '20px 0', justifyContent: 'center' }}>
                 <Grid item xs={14} sm={6} md={4}>
                   <Card>
